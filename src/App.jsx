@@ -26,11 +26,34 @@ setTasks(tasks.filter((task) => task.id !== id));
 };
    
   return (
-    
-  )
+    <div> 
+         <h1>📝 Todo List</h1>
+
+    <div className="input-group">
+      <input
+        type="text"
+        placeholder="Add a new task..."
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <button onClick={addTask}>Add</button>
+    </div>
+
+    <ul className="task-list">
+      {tasks.map((task) => (
+        <li key={task.id} className={task.done ? "done" : ""}>
+          <span onClick={() => toggleTask(task.id)}>
+            {task.text}
+          </span>
+          <button onClick={() => deleteTask(task.id)}>❌</button>
+        </li>
+      ))}
+    </ul>
+
+
+    </div>
+  );
 }
 
 export default App
 
-
-layout and think time
